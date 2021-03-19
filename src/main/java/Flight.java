@@ -26,5 +26,11 @@ public class Flight {
     public void addPassengerToFlight(Passenger passenger) {
         passengers.add(passenger);
     }
+
+    public int getAvailableSeatCount(Plane plane) {
+        int totalSeats = plane.getCapacityFromEnum();
+        int bookedSeats = getPassengerCount();
+        return totalSeats - bookedSeats;
+    }
 }
 
