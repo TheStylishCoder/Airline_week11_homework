@@ -8,4 +8,12 @@ public class Passenger {
         this.name = name;
         this.numberOfBags = numberOfBags;
     }
+
+    public String getName() {
+        return this.name;
+    }
+
+    public int getNumberOfBags() {
+        return numberOfBags;
+    }
 }
