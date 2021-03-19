@@ -8,7 +8,9 @@ public class Flight {
     String flightNumber;
     String destination;
     String departureAirport;
+    ArrayList<Integer> seatNumbers;
     Date departureTime;
+
 
     public Flight(Plane plane, String flightNumber, String destination, String departureAirport){
         this.passengers = new ArrayList<Passenger>();
@@ -16,6 +18,7 @@ public class Flight {
         this.flightNumber = flightNumber;
         this.destination = destination;
         this.departureAirport = departureAirport;
+        this.seatNumbers = new ArrayList<Integer>();
         this.departureTime = new Date();
 
     }
@@ -52,6 +55,25 @@ public class Flight {
     public String getFlightNumber(){
         return this.flightNumber;
     }
+
+    public ArrayList<Integer> getSeatNumbers() {
+        return seatNumbers;
+    }
+
+    public void populateSeatNumberList(Plane plane){
+        int totalSeats = plane.getCapacityFromEnum();
+        int currentSeatNumber = 1;
+        for(currentSeatNumber = 1 ; currentSeatNumber  <= totalSeats; currentSeatNumber ++) {
+            seatNumbers.add(currentSeatNumber);
+        }
+        System.out.println(seatNumbers);
+
+    }
+
+    public int getSeatNumberCount(){
+        return this.seatNumbers.size();
+    }
+
 
 
 }

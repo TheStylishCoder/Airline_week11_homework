@@ -8,6 +8,7 @@ public class FlightTest {
 
     private Flight flight;
     private Plane plane;
+    private Plane plane2;
     private Passenger passenger;
     private Passenger passenger2;
     private Passenger passenger3;
@@ -16,6 +17,7 @@ public class FlightTest {
     @Before
     public void before(){
         plane = new Plane(PlaneType.GULFSTREAMG650);
+        plane2 = new Plane(PlaneType.BOEING747);
         flight = new Flight(plane, "IT756", "FCO", "GLA");
         passenger = new Passenger("Jim Halpert", 1);
         passenger2 = new Passenger("Pam Halpert", 1);
@@ -57,7 +59,7 @@ public class FlightTest {
         assertEquals(flight, passenger.getFlight());
         assertEquals(flight, passenger2.getFlight());
         assertEquals(flight, passenger3.getFlight());
-        
+
     }
 
     @Test
@@ -70,5 +72,10 @@ public class FlightTest {
         assertEquals("IT756", flight.getFlightNumber());
     }
 
+    @Test
+    public void canPopulateSetNumbersCorrectly(){
+        flight.populateSeatNumberList(plane2);
+        assertEquals(10, flight.getSeatNumberCount());
+    }
 
 }
