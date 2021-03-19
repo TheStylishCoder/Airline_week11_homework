@@ -5,12 +5,12 @@ import static org.junit.Assert.assertEquals;
 
 public class FlightTest {
 
-    Flight flight;
-    Plane plane;
-    Passenger passenger;
-    Passenger passenger2;
-    Passenger passenger3;
-    Passenger passenger4;
+    private Flight flight;
+    private Plane plane;
+    private Passenger passenger;
+    private Passenger passenger2;
+    private Passenger passenger3;
+    private Passenger passenger4;
 
     @Before
     public void before(){
