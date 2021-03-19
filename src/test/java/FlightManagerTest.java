@@ -25,5 +25,18 @@ public class FlightManagerTest {
         assertEquals(10, flightManager.getBaggageAllowancePerPerson(plane));
     }
 
+    @Test
+    public void totalPassengerBagWeightStartsAt0(){
+        assertEquals(0, flightManager.getTotalPassengerBagWeightBooked(flight, plane));
+    }
+
+    @Test
+    public void canGetTotalPassengerBagWeightBooked(){
+        flight.bookPassenger(plane, passenger);
+        flight.bookPassenger(plane, passenger2);
+        assertEquals(20, flightManager.getTotalPassengerBagWeightBooked(flight, plane));
+
+    }
+
 
 }

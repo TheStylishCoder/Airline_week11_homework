@@ -5,4 +5,8 @@ public class FlightManager {
         int planeCapacity = plane.getCapacityFromEnum();
         return totalPlaneBaggageAllowance / planeCapacity;
     }
+
+    public int getTotalPassengerBagWeightBooked(Flight flight, Plane plane){
+        return flight.getPassengerCount() * getBaggageAllowancePerPerson(plane);
+    }
 }
