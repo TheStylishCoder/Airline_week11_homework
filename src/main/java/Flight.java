@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 
 public class Flight {
@@ -74,12 +75,31 @@ public class Flight {
         return this.seatNumbers.size();
     }
 
-    public Integer assignRandomSeatNumber(){
-        int randomSeat = (int) ((Math.random() * seatNumbers.size()));
-        System.out.println(randomSeat);
-        return seatNumbers.remove(randomSeat);
 
+    public void shuffleSeatNumberList(){
+        Collections.shuffle(seatNumbers);
+        System.out.println(seatNumbers);
     }
+
+    public Integer removeSeatFromSeatNumbersList(){
+        return this.seatNumbers.remove(0);
+    }
+
+    public void assignRandomSeatToPassenger(Passenger passenger){
+        int seat = removeSeatFromSeatNumbersList();
+        passenger.setSeatNumber(seat);
+    }
+
+//    public Integer selectRandomSeatNumber(){
+//        int randomSeat = (int) ((Math.random() * seatNumbers.size())); ///fix to show values not indexes
+//        System.out.println(randomSeat);
+//        return seatNumbers.remove(randomSeat);
+//
+//    }
+
+
+
+
 
 
 

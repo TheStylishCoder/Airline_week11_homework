@@ -79,10 +79,34 @@ public class FlightTest {
     }
 
     @Test
-    public void canAssignRandomSeatNumber(){
+    public void canSelectRandomSeatNumber(){
         flight.populateSeatNumberList(plane2);
-        flight.assignRandomSeatNumber();
+        flight.shuffleSeatNumberList();
+        flight.assignRandomSeatToPassenger(passenger);
         assertEquals(9, flight.getSeatNumberCount());
+    }
+
+    @Test
+    public void canAssignRandomSeatToPassenger(){
+        flight.populateSeatNumberList(plane2);
+        flight.assignRandomSeatToPassenger(passenger);
+        assertEquals(9, flight.getSeatNumberCount());
+    }
+
+    @Test
+    public void canAssignRandomSeatsToMultiplePassengers(){
+        flight.populateSeatNumberList(plane2);
+        flight.shuffleSeatNumberList();
+        flight.assignRandomSeatToPassenger(passenger);
+        System.out.println(passenger.getSeatNumber());
+        flight.assignRandomSeatToPassenger(passenger2);
+        System.out.println(passenger2.getSeatNumber());
+        flight.assignRandomSeatToPassenger(passenger3);
+        System.out.println(passenger3.getSeatNumber());
+        flight.assignRandomSeatToPassenger(passenger4);
+        System.out.println(passenger4.getSeatNumber());
+        System.out.println(flight.seatNumbers);
+        assertEquals(6, flight.getSeatNumberCount());
     }
 
 }
