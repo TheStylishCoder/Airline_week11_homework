@@ -9,4 +9,8 @@ public class FlightManager {
     public int getTotalPassengerBagWeightBooked(Flight flight, Plane plane){
         return flight.getPassengerCount() * getBaggageAllowancePerPerson(plane);
     }
+
+    public int getTotalPassengerBagWeightRemaining(Plane plane, Flight flight) {
+        return plane.getTotalBaggageAllowanceForPlane() - getTotalPassengerBagWeightBooked(flight, plane);
+    }
 }
