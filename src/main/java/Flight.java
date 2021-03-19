@@ -22,5 +22,9 @@ public class Flight {
     public int getPassengerCount() {
         return this.passengers.size();
     }
+
+    public void addPassengerToFlight(Passenger passenger) {
+        passengers.add(passenger);
+    }
 }
 

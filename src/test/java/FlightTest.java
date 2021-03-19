@@ -20,5 +20,10 @@ public class FlightTest {
     public void checkPassengersListStartsEmpty(){
         assertEquals(0, flight.getPassengerCount());
     }
-    
+
+    @Test
+    public void canAddPassengerToFlight(){
+        flight.addPassengerToFlight(passenger);
+        assertEquals(1, flight.getPassengerCount());
+    }
 }
