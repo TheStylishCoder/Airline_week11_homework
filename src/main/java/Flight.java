@@ -74,6 +74,13 @@ public class Flight {
         return this.seatNumbers.size();
     }
 
+    public Integer assignRandomSeatNumber(){
+        int randomSeat = (int) ((Math.random() * seatNumbers.size()));
+        System.out.println(randomSeat);
+        return seatNumbers.remove(randomSeat);
+
+    }
+
 
 
 }
