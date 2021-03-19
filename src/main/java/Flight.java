@@ -32,5 +32,11 @@ public class Flight {
         int bookedSeats = getPassengerCount();
         return totalSeats - bookedSeats;
     }
+
+    public void bookPassenger(Plane plane, Passenger passenger) {
+        if(getAvailableSeatCount(plane) > 0){
+            addPassengerToFlight(passenger);
+        }
+    }
 }
 
