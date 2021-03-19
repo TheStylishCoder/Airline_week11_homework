@@ -2,6 +2,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 public class FlightTest {
 
@@ -15,7 +16,7 @@ public class FlightTest {
     @Before
     public void before(){
         plane = new Plane(PlaneType.GULFSTREAMG650);
-        flight = new Flight(plane, "IT756", "FCO", "GLA", "09.30");
+        flight = new Flight(plane, "IT756", "FCO", "GLA");
         passenger = new Passenger("Jim Halpert", 1);
         passenger2 = new Passenger("Pam Halpert", 1);
         passenger3 = new Passenger("Michael Scott", 1);
@@ -41,16 +42,33 @@ public class FlightTest {
 
     @Test
     public void canBookPassengerAsThereIsSpaceOnFlight(){
-        flight.bookPassenger(plane, passenger);
+        flight.bookPassenger(plane, passenger, flight);
         assertEquals(1, flight.getPassengerCount());
+        assertEquals(flight, passenger.getFlight());
     }
 
     @Test
     public void cannotBookFourthPassengerAsNoSpaceOnFlight(){
-        flight.bookPassenger(plane, passenger);
-        flight.bookPassenger(plane, passenger2);
-        flight.bookPassenger(plane, passenger3);
-        flight.bookPassenger(plane, passenger4);
+        flight.bookPassenger(plane, passenger, flight);
+        flight.bookPassenger(plane, passenger2, flight);
+        flight.bookPassenger(plane, passenger3, flight);
+        flight.bookPassenger(plane, passenger4, flight);
         assertEquals(3, flight.getPassengerCount());
+        assertEquals(flight, passenger.getFlight());
+        assertEquals(flight, passenger2.getFlight());
+        assertEquals(flight, passenger3.getFlight());
+        
     }
+
+    @Test
+    public void date(){
+        flight.canGetDate();
+    }
+
+    @Test
+    public void canGetFlightNumber(){
+        assertEquals("IT756", flight.getFlightNumber());
+    }
+
+
 }
