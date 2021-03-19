@@ -24,12 +24,12 @@ public class PlaneTest {
 
     @Test
     public void canGetTotalWeightAllowanceOfPlane(){
-        assertEquals(30, plane.getTotalWeightFromEnum());
+        assertEquals(60, plane.getTotalWeightFromEnum());
     }
 
     @Test
     public void canGetTotalBaggageAllowanceOfPlane(){
-        assertEquals(15, plane.getTotalBaggageAllowanceForPlane());
+        assertEquals(30, plane.getTotalBaggageAllowanceForPlane());
     }
 
 }
