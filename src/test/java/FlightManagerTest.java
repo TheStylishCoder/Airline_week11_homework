@@ -68,5 +68,20 @@ public class FlightManagerTest {
         assertTrue(flight.passengers.get(0).getSeatNumber() < flight.passengers.get(1).getSeatNumber() && flight.passengers.get(1).getSeatNumber() < flight.passengers.get(2).getSeatNumber());
     }
 
+    @Test
+    public void canBinarySearch(){
+        flight.populateSeatNumberList(plane2);
+        flight.bookPassengerOntoFlight(plane2, passenger, flight);
+        System.out.println(passenger.getSeatNumber());
+        flight.bookPassengerOntoFlight(plane2, passenger2, flight);
+        System.out.println(passenger2.getSeatNumber());
+        flight.bookPassengerOntoFlight(plane2, passenger3, flight);
+        System.out.println(passenger3.getSeatNumber());
+        flight.bookPassengerOntoFlight(plane2, passenger4, flight);
+        System.out.println(passenger4.getSeatNumber());
+        System.out.println(flight.passengers);
+        assertEquals(false, flightManager.binarySearch(flight, 5));
+    }
+
 
 }

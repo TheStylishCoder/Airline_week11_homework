@@ -18,25 +18,7 @@ public class FlightManager {
     }
 
 
-    //for each passenger in passenger list get seat number and compare
-       //     we know to stop based on passengercount
 
-
-//    public void bubbleSortArray(Flight flight){
-//        int length = flight.getPassengerCount();
-//        boolean sorted = false;
-//
-//        while (!sorted) {
-//            sorted = true;
-//            for (int i = 0; i < length-1; i++){
-//                if(flight.passengers.get(i).getSeatNumber() > flight.passengers.get(i + 1).getSeatNumber()){
-////                    int lower = flight.passengers.get(i + 1).getSeatNumber();
-//                    Collections.swap(flight.passengers, i, i+1);
-//
-//                }
-//            }
-//        }
-//    }
 
     public void bubbleSortArray(Flight flight){
         int length = flight.getPassengerCount();
@@ -57,45 +39,36 @@ public class FlightManager {
         }
     }
 
+    public boolean binarySearch(Flight flight, int seatNumber){
+        bubbleSortArray(flight);
+        int length = flight.getPassengerCount();
+
+        int l = 0, r = length - 1;
+        while (l <=r){
+            int m = l + (r-1) / 2;
+            if(flight.passengers.get(m).getSeatNumber() == seatNumber) {
+                Passenger foundPassenger = flight.passengers.get(m);
+                System.out.println(foundPassenger.getSeatNumber());
+                return true;
+            }
+            if(flight.passengers.get(m).getSeatNumber() < seatNumber){
+                l = m + 1;
+            } else {
+                r = m - 1;
+            }
 
 
-//    public void bubbleSortArray(Flight flight) {
-//        int n = flight.getPassengerCount();
-//        boolean sorted = false;
-//        for(i = 1:n){
-//            boolean swapped = false;
-//        while (!sorted) {
-//            sorted = true;
-//            for (int i = 0; i < n-1; i++) {
-//                if (flight.seatNumbers.get(i).compareTo(flight.seatNumbers.get(i + 1)) > 0) {
-//                    seat = flight.seatNumbers.get(i);
-//                    flight.seatNumbers.set(i, flight.seatNumbers.get(i + 1));
-//                    flight.seatNumbers.set(i + 1, seat);
-//                    sorted = false;
-//                }
-//            }
-//        }
-//        System.out.println(flight.seatNumbers);
-//    }
+        }
+        l = length;
+        return false;
+
+    }
 
 
 
 
-//    public void bubbleSortArrayList(Flight flight) {
-//        Integer seat;
-//        boolean sorted = false;
-//
-//        while (!sorted) {
-//            sorted = true;
-//            for (int i = 0; i < flight.passengers.size()-1; i++) {
-//                if (flight.seatNumbers.get(i).compareTo(flight.seatNumbers.get(i + 1)) > 0) {
-//                    seat = flight.seatNumbers.get(i);
-//                    flight.seatNumbers.set(i, flight.seatNumbers.get(i + 1));
-//                    flight.seatNumbers.set(i + 1, seat);
-//                    sorted = false;
-//                }
-//            }
-//        }
-//        System.out.println(flight.seatNumbers);
-//    }
+
+
+
+
 }
