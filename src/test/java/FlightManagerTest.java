@@ -2,22 +2,29 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class FlightManagerTest {
 
     private FlightManager flightManager;
     private Plane plane;
+    private Plane plane2;
     private Flight flight;
     private Passenger passenger;
     private Passenger passenger2;
+    private Passenger passenger3;
+    private Passenger passenger4;
 
     @Before
     public void before (){
         flightManager = new FlightManager();
         plane = new Plane(PlaneType.GULFSTREAMG650);
+        plane2 = new Plane(PlaneType.BOEING747);
         flight = new Flight(plane, "IT756", "FCO", "GLA");
         passenger = new Passenger("Jim Halpert", 1);
         passenger2 = new Passenger("Pam Halpert", 1);
+        passenger3 = new Passenger("Michael Scott", 1);
+        passenger4 = new Passenger("Holly Flax", 1);
     }
 
     @Test
@@ -41,6 +48,24 @@ public class FlightManagerTest {
     public void canGetTotalPassengerBagWeightRemaining(){
         flight.bookPassenger(plane, passenger, flight);
         assertEquals(20, flightManager.getTotalPassengerBagWeightRemaining(plane, flight));
+    }
+
+    @Test
+    public void canBubbleSort(){
+        flight.populateSeatNumberList(plane2);
+        flight.shuffleSeatNumberList();
+        flight.bookPassengerOntoFlight(plane2, passenger, flight);
+        System.out.println(passenger.getSeatNumber());
+        flight.bookPassengerOntoFlight(plane2, passenger2, flight);
+        System.out.println(passenger2.getSeatNumber());
+        flight.bookPassengerOntoFlight(plane2, passenger3, flight);
+        System.out.println(passenger3.getSeatNumber());
+        flight.bookPassengerOntoFlight(plane2, passenger4, flight);
+        System.out.println(passenger4.getSeatNumber());
+        flightManager.bubbleSortArray(flight);
+        System.out.println(flight.passengers);
+//        assertEquals(4, flight.getPassengerCount());
+        assertTrue(flight.passengers.get(0).getSeatNumber() < flight.passengers.get(1).getSeatNumber() && flight.passengers.get(1).getSeatNumber() < flight.passengers.get(2).getSeatNumber());
     }
 
 

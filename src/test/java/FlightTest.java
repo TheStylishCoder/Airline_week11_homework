@@ -105,7 +105,6 @@ public class FlightTest {
         System.out.println(passenger3.getSeatNumber());
         flight.assignRandomSeatToPassenger(passenger4);
         System.out.println(passenger4.getSeatNumber());
-        System.out.println(flight.seatNumbers);
         assertEquals(6, flight.getSeatNumberCount());
     }
 

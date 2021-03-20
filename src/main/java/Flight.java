@@ -4,13 +4,13 @@ import java.util.Date;
 
 public class Flight {
 
-    private ArrayList<Passenger> passengers;
+    ArrayList<Passenger> passengers;
     private Plane plane;
-    String flightNumber;
-    String destination;
-    String departureAirport;
+    private String flightNumber;
+    private String destination;
+    private String departureAirport;
     ArrayList<Integer> seatNumbers;
-    Date departureTime;
+    private Date departureTime;
 
 
     public Flight(Plane plane, String flightNumber, String destination, String departureAirport){
@@ -90,7 +90,16 @@ public class Flight {
         passenger.setSeatNumber(seat);
     }
 
-//    public Integer selectRandomSeatNumber(){
+    public void bookPassengerOntoFlight(Plane plane, Passenger passenger, Flight flight) {
+        if(getAvailableSeatCount(plane) > 0){
+            addPassengerToFlight(passenger);
+            passenger.setFlight(flight);
+            assignRandomSeatToPassenger(passenger);
+        }
+    }
+
+
+    //    public Integer selectRandomSeatNumber(){
 //        int randomSeat = (int) ((Math.random() * seatNumbers.size())); ///fix to show values not indexes
 //        System.out.println(randomSeat);
 //        return seatNumbers.remove(randomSeat);
