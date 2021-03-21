@@ -51,7 +51,7 @@ public class FlightManagerTest {
     }
 
     @Test
-    public void canBubbleSort(){
+    public void canSortPassengersBySeatNumber(){
         flight.populateSeatNumberList(plane2);
         flight.shuffleSeatNumberList();
         flight.bookPassengerOntoFlight(plane2, passenger, flight);
@@ -62,25 +62,29 @@ public class FlightManagerTest {
         System.out.println(passenger3.getSeatNumber());
         flight.bookPassengerOntoFlight(plane2, passenger4, flight);
         System.out.println(passenger4.getSeatNumber());
-        flightManager.bubbleSortArray(flight);
-        System.out.println(flight.passengers);
-//        assertEquals(4, flight.getPassengerCount());
+        flightManager.sortPassengersBySeatNumber(flight);
+        assertEquals(4, flight.getPassengerCount());
         assertTrue(flight.passengers.get(0).getSeatNumber() < flight.passengers.get(1).getSeatNumber() && flight.passengers.get(1).getSeatNumber() < flight.passengers.get(2).getSeatNumber());
     }
 
     @Test
-    public void canBinarySearch(){
-        flight.populateSeatNumberList(plane2);
-        flight.bookPassengerOntoFlight(plane2, passenger, flight);
-        System.out.println(passenger.getSeatNumber());
-        flight.bookPassengerOntoFlight(plane2, passenger2, flight);
-        System.out.println(passenger2.getSeatNumber());
-        flight.bookPassengerOntoFlight(plane2, passenger3, flight);
-        System.out.println(passenger3.getSeatNumber());
-        flight.bookPassengerOntoFlight(plane2, passenger4, flight);
-        System.out.println(passenger4.getSeatNumber());
-        System.out.println(flight.passengers);
-        assertEquals(false, flightManager.binarySearch(flight, 5));
+    public void canFindPassengerBySeatNumber(){
+        flight.populateSeatNumberList(plane);
+        flight.shuffleSeatNumberList();
+        flight.bookPassengerOntoFlight(plane, passenger, flight);
+        flight.bookPassengerOntoFlight(plane, passenger2, flight);
+        flight.bookPassengerOntoFlight(plane, passenger3, flight);
+        assertEquals(true, flightManager.findPassengerBySeatNumber(flight, 1));
+    }
+
+    @Test
+    public void cannotFindPassengerBySeatNumberBecauseSeatNumberDoesNotExist(){
+        flight.populateSeatNumberList(plane);
+        flight.shuffleSeatNumberList();
+        flight.bookPassengerOntoFlight(plane, passenger, flight);
+        flight.bookPassengerOntoFlight(plane, passenger2, flight);
+        flight.bookPassengerOntoFlight(plane, passenger3, flight);
+        assertEquals(false, flightManager.findPassengerBySeatNumber(flight, 4));
     }
 
 

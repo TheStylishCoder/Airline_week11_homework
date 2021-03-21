@@ -108,4 +108,14 @@ public class FlightTest {
         assertEquals(6, flight.getSeatNumberCount());
     }
 
+    @Test
+    public void canBookPassengerOntoFlightAndAssignRandomSeat(){
+        flight.populateSeatNumberList(plane);
+        flight.shuffleSeatNumberList();
+        flight.bookPassengerOntoFlight(plane, passenger, flight);
+        assertEquals(1, flight.getPassengerCount());
+        assertEquals(flight, passenger.getFlight());
+        assertEquals(2, flight.getSeatNumberCount());
+    }
+
 }

@@ -20,7 +20,7 @@ public class FlightManager {
 
 
 
-    public void bubbleSortArray(Flight flight){
+    public void sortPassengersBySeatNumber(Flight flight){
         int length = flight.getPassengerCount();
         for(int i = 0; i < length; i++) {
             boolean swapped = false;
@@ -39,8 +39,8 @@ public class FlightManager {
         }
     }
 
-    public boolean binarySearch(Flight flight, int seatNumber){
-        bubbleSortArray(flight);
+    public boolean findPassengerBySeatNumber(Flight flight, int seatNumber){
+        sortPassengersBySeatNumber(flight);
         int length = flight.getPassengerCount();
 
         int l = 0, r = length - 1;

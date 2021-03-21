@@ -63,8 +63,7 @@ public class Flight {
 
     public void populateSeatNumberList(Plane plane){
         int totalSeats = plane.getCapacityFromEnum();
-        int currentSeatNumber = 1;
-        for(currentSeatNumber = 1 ; currentSeatNumber  <= totalSeats; currentSeatNumber ++) {
+        for(int currentSeatNumber = 1 ; currentSeatNumber  <= totalSeats; currentSeatNumber ++) {
             seatNumbers.add(currentSeatNumber);
         }
         System.out.println(seatNumbers);
@@ -97,14 +96,6 @@ public class Flight {
             assignRandomSeatToPassenger(passenger);
         }
     }
-
-
-    //    public Integer selectRandomSeatNumber(){
-//        int randomSeat = (int) ((Math.random() * seatNumbers.size())); ///fix to show values not indexes
-//        System.out.println(randomSeat);
-//        return seatNumbers.remove(randomSeat);
-//
-//    }
 
 
 
